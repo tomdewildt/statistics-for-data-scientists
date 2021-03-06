@@ -1,0 +1,10 @@
+linters: with_defaults(
+    line_length_linter = line_length_linter(80),
+    commented_code_linter = NULL
+ )
+exclusions: list(
+    "data/demographics-synthetic.csv",
+    "data/face-data.csv",
+    "data/high-school.csv",
+    "data/voting-demo.csv"
+ )
