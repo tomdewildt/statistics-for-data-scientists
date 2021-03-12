@@ -16,12 +16,6 @@ jobs:
         run: sudo apt-get install libcurl4-openssl-dev libxml2-dev -y
       - name: Setup r
         uses: r-lib/actions/setup-r@v1
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.local/share/renv
-          key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
-          restore-keys: ${{ runner.os }}-renv-
       - name: Install dependencies
         run: |
           if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
