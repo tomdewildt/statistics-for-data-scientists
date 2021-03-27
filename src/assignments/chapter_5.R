@@ -4,6 +4,9 @@
 #### otherwise equal to zero. Now let X be distributed according to this
 #### exponential distribution.
 
+### Setup
+library(MASS)
+
 ### 1. Determine the relative standard deviation of X.
 
 #### Derive rsd(X) = sqrt(var(X))/mean(X)
@@ -26,6 +29,13 @@ rsd
 ####
 #### We need to find q such that F(q) = p, so p = 1 - exp(-lambda * q). By
 #### solving this equation we get: ?
+
+### 4. Given realizations [0.05, 0.20, 1.72, 0.61, 0.24, 0.79, 0.13, 0.59, 0.26,
+###    0.54] from random variables X1,...,X10 which we assume to be distributed
+###    i.i.d. exponential, use [R] to compute the maximum likelihood estimate of
+###    lambda.
+x = c(0.05, 0.20, 1.72, 0.61, 0.24, 0.79, 0.13, 0.59, 0.26, 0.54)
+fitdistr(x, densfun = "exponential")
 
 # Problem 5.2
 
@@ -70,14 +80,6 @@ means <- apply(high_school_data[, numerical], 2, function(x) {
 })
 means
 
-#### Calculate ((n-1) * S^2 / x_p(f_x^2), (n-1) * S^2 / x_1-p(f_x^2)]
-variances <- apply(high_school_data[, numerical], 2, function(x) {
-  lower <- (n - 1) * var(x) / qchisq(p, df = n - 1, lower.tail = FALSE)
-  upper <- (n - 1) * var(x) / qchisq(1 - p, df = n - 1, lower.tail = FALSE)
-  c(lower, upper)
-})
-variances
-
 ### 3. Calculate for each numerical variable the 0.20th quantile.
 quantiles <- apply(high_school_data[, numerical], 2, function(x) {
   quantile(x, prob = 0.20)
@@ -102,3 +104,47 @@ lower <- prop_no_sports - uncertainty
 upper <- prop_no_sports + uncertainty
 
 c(lower, upper)
+
+# Problem 5.5
+
+#### Consider the exponential CDF FE(x) = 1 - exp(-lambda(x - eta)) for x > eta
+#### and otherwise equal to zero. Assume that the random variables X1, X2, ...,
+#### Xn are i.i.d. exponentially Exp(eta, lambda) distributed.
+
+### 1. Determine the moment estimator for lambda in case eta = 0.
+
+#### (1) Determine population mean: mu(f_theta) = E(x) = 1 / lambda
+#### (2) Determine sample mean: x̄ = sum_i=1^n X_i / n
+#### (3) Set sample mean equal to population mean: x̄ = 1 / lambda
+#### (4) Solve for parameter of interest: lambda = 1 / x̄
+
+# Problem 5.6
+
+#### Consider the data on approximately 50000 children at high schools in the
+#### Netherlands and focus on the variable SPORTS. Create a data set that
+#### contains only positive values (i.e., eliminate the zeroes). Assume that the
+#### data on SPORTS are from a gamma distribution with density function.
+
+### 2. Use the results from part 1 to determine the moment estimates for alpha
+###    and beta based on the SPORTS data.
+high_school_sports <- high_school_data[high_school_data$SPORTS > 0, ]
+
+n <- nrow(high_school_sports)
+
+#### Calculate sample moments x̄ & M_2
+xbar <- mean(high_school_sports$SPORTS)
+xbar
+
+m2 <- ((n - 1) / n) * var(high_school_sports$SPORTS)
+m2
+
+#### Calculate alpha = x̄^2 / M_2
+alpha = xbar^2 / m2
+alpha
+
+#### Calculate beta = x̄ / M_2
+beta = xbar / m2
+beta
+
+### 3. Use [R] to compute the maximum likelihood estimates for alpha and beta.
+fitdistr(high_school_sports$SPORTS, densfun = "gamma", lower = c(0, 0))
