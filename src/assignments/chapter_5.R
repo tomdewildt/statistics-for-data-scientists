@@ -34,7 +34,7 @@ rsd
 ###    0.54] from random variables X1,...,X10 which we assume to be distributed
 ###    i.i.d. exponential, use [R] to compute the maximum likelihood estimate of
 ###    lambda.
-x = c(0.05, 0.20, 1.72, 0.61, 0.24, 0.79, 0.13, 0.59, 0.26, 0.54)
+x <- c(0.05, 0.20, 1.72, 0.61, 0.24, 0.79, 0.13, 0.59, 0.26, 0.54)
 fitdistr(x, densfun = "exponential")
 
 # Problem 5.2
@@ -139,11 +139,11 @@ m2 <- ((n - 1) / n) * var(high_school_sports$SPORTS)
 m2
 
 #### Calculate alpha = x̄^2 / M_2
-alpha = xbar^2 / m2
+alpha <- xbar^2 / m2
 alpha
 
 #### Calculate beta = x̄ / M_2
-beta = xbar / m2
+beta <- xbar / m2
 beta
 
 ### 3. Use [R] to compute the maximum likelihood estimates for alpha and beta.

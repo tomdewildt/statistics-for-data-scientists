@@ -41,7 +41,7 @@ library(MASS)
 #### Define log likelihood
 minuslogl <- function(mu, sigma) {
   densities <- dlnorm(high_school_watch_tv$TV, meanlog = mu, sdlog = sigma)
-  
+
   -sum(log(densities))
 }
 
