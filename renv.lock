@@ -429,6 +429,13 @@
       "Repository": "CRAN",
       "Hash": "a399e4773075fc2375b71f45fca186c4"
     },
+    "outliers": {
+      "Package": "outliers",
+      "Version": "0.14",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "f6322b38ea06f3cfdaeeaaae6b17653a"
+    },
     "pillar": {
       "Package": "pillar",
       "Version": "1.5.1",
