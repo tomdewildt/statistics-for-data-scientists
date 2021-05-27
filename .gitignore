@@ -123,3 +123,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+### Exams ###
+src/exams/final_exam.R
