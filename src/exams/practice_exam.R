@@ -50,6 +50,24 @@ odds_no_exposure <- p_d_c_given_e_c / (1 - p_d_c_given_e_c)
 
 odds_exposure / odds_no_exposure
 
+# Question 31
+#
+#          X2
+#   | - | 0 | 1 | 2 |
+# X | 0 | 0 | 1 | 2 |
+# 1 | 1 | 1 | 2 | - |
+#   | 2 | 2 | - | - |
+#
+p_x1_0_x2_0 <- dbinom(0, 20, 0.1) * dbinom(0, 40, 0.05)
+p_x1_1_x2_0 <- dbinom(1, 20, 0.1) * dbinom(0, 40, 0.05)
+p_x1_2_x2_0 <- dbinom(2, 20, 0.1) * dbinom(0, 40, 0.05)
+p_x1_0_x2_1 <- dbinom(0, 20, 0.1) * dbinom(1, 40, 0.05)
+p_x1_0_x2_2 <- dbinom(0, 20, 0.1) * dbinom(2, 40, 0.05)
+p_x1_1_x2_1 <- dbinom(1, 20, 0.1) * dbinom(1, 40, 0.05)
+
+p_x1_0_x2_0 + p_x1_1_x2_0 + p_x1_2_x2_0 +
+  p_x1_0_x2_1 + p_x1_0_x2_2 + p_x1_1_x2_1
+
 # Question 32
 x <- c(rep(0, 5), rep(1, 30), rep(2, 45), rep(3, 60), rep(4, 60))
 n <- length(x)
@@ -73,3 +91,9 @@ library("e1071")
 
 skewness(x)
 kurtosis(x)
+
+# Question 38
+batch1 <- c(5.2, 3.2, 4.9, 3.7, 2.5, 2.7, 4.1, 3.6, 6.0, 5.7, 4.6, 5.6)
+batch2 <- c(2.7, 4.9, 5.2, 3.8, 3.4, 3.4, 2.8, 4.4, 4.8, 4.7, 3.6, 4.0)
+
+cov(batch1, batch2)
