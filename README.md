@@ -1,5 +1,5 @@
 # Statistics For Data Scientists
-[![Build](https://img.shields.io/github/workflow/status/tomdewildt/statistics-for-data-scientists/ci/master)](https://github.com/tomdewildt/statistics-for-data-scientists/actions?query=workflow%3Aci)
+[![Build](https://img.shields.io/github/actions/workflow/status/tomdewildt/statistics-for-data-scientists/ci.yml?branch=master)](https://github.com/tomdewildt/statistics-for-data-scientists/actions/workflows/ci.yml)
 [![License](https://img.shields.io/github/license/tomdewildt/statistics-for-data-scientists)](https://github.com/tomdewildt/statistics-for-data-scientists/blob/master/LICENSE)
 
 Code for The Statistics For Data Scientists course of my master's degree.
